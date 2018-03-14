@@ -1,15 +1,19 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <pthread.h>
-#include <unistd.h>
-static const direction[]={'N','S','E','W'};
-static const Turn[]={'L','R','S'};
-static void straight(int, int);
-static void leftturn(int, int);
-static void rightturn(int, int);
-static void * criticalsection(void*);
-pthread_mutex_t NW ;
-pthread_mutex_t NE ;
-pthread_mutex_t SE ;
-pthread_mutex_t SW ;
+void lock(CAR, MUTEX) 
+{do 
+{         
+if (pthread_mutex_lock(&MUTEX)) { 
+printf("CAR %d is locked\n\n", CAR);     
+} 
+} while(0);
+}
+void unlock(CAR, MUTEX) 
+{do 
+{     
+ if (pthread_mutex_unlock(&MUTEX)) { 
+printf("CAR %d is unlocked\n\n", CAR);  
+} 
+} while(0);}
+void intersection(){
+	printf("------------Car is in Traffic Intersection------------\n\n");
+}
 
