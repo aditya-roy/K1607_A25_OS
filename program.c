@@ -16,6 +16,23 @@ printf("CAR %d is unlocked\n\n", CAR);
 void intersection(){
 	printf("------------Car is in Traffic Intersection------------\n\n");
 }
+static void * criticalsection(void* arg){
+int * carnumberptr;
+int cn;
+int carorigin = random()%4;
+int turn = random()%3;
+printf("Vehicle is Approaching intersection..\n\n");
+printf("direction is %c and Turn is %c \n",direction[carorigin],Turn[turn]);
+carnumberptr = (int*) arg;
+cn = (int) *carnumberptr;
+if(turn==0){
+leftturn(carorigin, cn);
+} else if(turn==1){
+rightturn(carorigin, cn);
+} else {
+straight(carorigin, cn);
+}
+}
 main()
 {
 	int n,i;
