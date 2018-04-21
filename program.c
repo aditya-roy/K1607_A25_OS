@@ -15,7 +15,7 @@ pthread_mutex_t SW ;
 void lock(CAR, MUTEX) 
 {do 
 {         
-if (pthread_mutex_lock(&MUTEX)) { 
+if (!(pthread_mutex_lock(&MUTEX))) { 
 printf("CAR %d is locked\n\n", CAR);     
 } 
 } while(0);
@@ -23,7 +23,7 @@ printf("CAR %d is locked\n\n", CAR);
 void unlock(CAR, MUTEX) 
 {do 
 {     
- if (pthread_mutex_unlock(&MUTEX)) { 
+ if (!(pthread_mutex_unlock(&MUTEX))) { 
 printf("CAR %d is unlocked\n\n", CAR);  
 } 
 } while(0);}
